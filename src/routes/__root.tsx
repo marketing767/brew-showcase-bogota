@@ -16,7 +16,7 @@ function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-paper px-4">
       <div className="max-w-md text-center">
-        <p className="font-serif italic text-accent text-lg mb-2">404</p>
+        <p className="font-serif italic text-gold text-lg mb-2">404</p>
         <h1 className="text-4xl font-extrabold uppercase tracking-tighter text-ink">
           Página no encontrada
         </h1>

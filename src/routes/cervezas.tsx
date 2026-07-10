@@ -98,7 +98,7 @@ function CountrySection({
   return (
     <section id={id} className="scroll-mt-32">
       <header className="px-5 pt-12 pb-6 border-t border-border">
-        <p className="font-serif italic text-lg text-accent mb-1">{eyebrow}</p>
+        <p className="font-serif italic text-lg text-gold mb-1">{eyebrow}</p>
         <h2 className="text-4xl font-extrabold tracking-tighter uppercase leading-none mb-2">
           {title}
         </h2>
