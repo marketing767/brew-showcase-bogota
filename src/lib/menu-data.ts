@@ -43,6 +43,7 @@ export const DRAFT: BeerItem[] = [
   { name: "Delirium Red", style: "Strong Fruit Beer", abv: "8%", ibu: "20", size: "330ml — 500ml", price: "$35.000 — $42.000", image: "https://framerusercontent.com/images/gSB2YNHQPDG4v37uRb4NZ5J28w.png" },
   { name: "Gulden Draak", style: "Según disponibilidad", abv: "10.5%", ibu: "25 — 30", size: "330ml — 500ml", price: "$35.000 — $42.000", image: "https://framerusercontent.com/images/GTqx0orNnOyGQVrmzEzznCibY.png" },
   { name: "Adnams Ghost Ship", style: "Pale Ale", abv: "4.6%", ibu: "40", size: "500ml", price: "$28.000", image: "https://framerusercontent.com/images/hTuaURI5iGNuAOlRrLoMSVCow.png" },
+  { name: "Lino", style: "New England IPA (NEIPA)", abv: "7%", ibu: "45", size: "330ml", price: "$24.000", image: "https://framerusercontent.com/images/BOiQD9VwIRvspTbqRCf4o2uVfXc.png" },
 ];
 
 export const CERVEZAS_BELGICA: BeerItem[] = [
@@ -190,7 +191,7 @@ export const LICORES: Record<string, SimpleItem[]> = {
   ],
   Vino: [
     { name: "Tinto de Verano", price: "$38.000" },
-    { name: "Vino de la Casa (Tinto o Blanco)", price: "$160.000" },
+    { name: "Vino de la Casa (Tinto o Blanco)", price: "$170.000" },
   ],
   Whisky: [
     { name: "Whisky Macallan 12 Años 700ml", price: "$750.000" },
