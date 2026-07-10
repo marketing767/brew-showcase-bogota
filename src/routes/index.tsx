@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Marquee } from "@/components/menu/Marquee";
 import { CATEGORIES, HERO_IMAGES } from "@/lib/menu-data";
+import logo from "@/assets/beer-lovers-logo.png.asset.json";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -27,16 +29,16 @@ function Home() {
       <div className="max-w-[430px] mx-auto border-x border-border min-h-screen flex flex-col">
         {/* HEADER */}
         <nav className="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b border-border px-5 py-3 flex justify-between items-center">
-          <div className="text-xl font-extrabold tracking-tighter uppercase leading-[0.85]">
-            Beer<br />Lovers
-            <span className="text-gold italic font-serif normal-case ml-1 text-base font-bold">
-              Bogotá
-            </span>
-          </div>
+          <img
+            src={logo.url}
+            alt="Beer Lovers Bogotá"
+            className="h-10 w-auto object-contain"
+          />
           <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground">
             Pq. 93
           </div>
         </nav>
+
 
         {/* HERO */}
         <section className="px-5 pt-6 pb-10 animate-reveal">
