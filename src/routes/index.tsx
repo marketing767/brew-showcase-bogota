@@ -40,13 +40,7 @@ function Home() {
 
         {/* HERO */}
         <section className="px-5 pt-6 pb-10 animate-reveal">
-          <div className="w-full aspect-[4/5] overflow-hidden bg-stone-200 mb-6 border border-border">
-            <img
-              src={HERO_IMAGES.home}
-              alt="Brindis con cervezas Delirium en Beer Lovers"
-              className="w-full h-full object-cover"
-            />
-          </div>
+
           <p className="font-serif italic text-base text-gold mb-2">
             Bienvenidos a la casa.
           </p>
