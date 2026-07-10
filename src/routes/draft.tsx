@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { MenuShell } from "@/components/menu/MenuShell";
 import { SectionHero } from "@/components/menu/SectionHero";
 import { BeerCard } from "@/components/menu/BeerCard";
-import { DRAFT, HERO_IMAGES } from "@/lib/menu-data";
+import { DRAFT } from "@/lib/menu-data";
 
 export const Route = createFileRoute("/draft")({
   head: () => ({
@@ -29,13 +29,13 @@ function Draft() {
         eyebrow="Recién servidas"
         title="Draft"
         description="Disfruta nuestra selección de cervezas de barril."
-        image={HERO_IMAGES.draft}
       />
-      <div className="px-5 space-y-12 pb-6">
+      <div className="px-5 space-y-4 pb-6">
         {DRAFT.map((item, i) => (
           <BeerCard key={item.name} item={item} index={i} />
         ))}
       </div>
+
       <div className="px-5 py-10 border-t border-border">
         <p className="text-xs text-muted-foreground italic leading-relaxed text-pretty">
           Cervezas sujetas a disponibilidad de inventario según el tiempo del
