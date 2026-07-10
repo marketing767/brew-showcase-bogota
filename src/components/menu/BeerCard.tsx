@@ -35,9 +35,10 @@ export function BeerCard({ item, index }: { item: BeerItem; index: number }) {
         </div>
       </button>
       <div className="px-4 pb-4 pt-1 border-t border-border/60 flex items-center justify-between gap-3">
-        <span className="text-lg font-extrabold tracking-tight text-accent">
+        <span className="text-lg font-extrabold tracking-tight text-ink">
           {item.price}
         </span>
+
         <button
           type="button"
           onClick={() => setOpen((o) => !o)}
