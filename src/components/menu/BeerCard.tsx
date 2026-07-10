@@ -1,54 +1,73 @@
 import type { BeerItem } from "@/lib/menu-data";
+import { useState } from "react";
 
 export function BeerCard({ item, index }: { item: BeerItem; index: number }) {
+  const [open, setOpen] = useState(false);
   return (
     <article
-      className="animate-reveal"
+      className="animate-reveal rounded-2xl border border-border bg-card overflow-hidden"
       style={{ animationDelay: `${Math.min(index * 60, 400)}ms` }}
     >
-      <div className="flex gap-5 items-end mb-3">
-        <div className="w-20 shrink-0 aspect-[1/2.5] bg-stone-50 border border-border flex items-end justify-center p-1.5 overflow-hidden">
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        className="w-full text-left px-4 py-4 flex gap-4 items-center"
+      >
+        <div className="w-20 h-24 shrink-0 flex items-center justify-center">
           <img
             src={item.image}
             alt={item.name}
             loading="lazy"
-            className="max-h-full max-w-full object-contain object-bottom"
+            className="max-h-full max-w-full object-contain"
           />
+
         </div>
-        <div className="flex-1 min-w-0 pb-1">
-          <h3 className="text-2xl font-extrabold tracking-tighter uppercase leading-[0.9] mb-1 text-balance">
+        <div className="flex-1 min-w-0">
+          <h3 className="text-lg font-extrabold tracking-tight uppercase leading-[1] mb-2 text-balance">
             {item.name}
           </h3>
-          <p className="text-[10px] font-bold text-gold uppercase tracking-[0.2em]">
-            {item.style}
-          </p>
+          <dl className="text-[11px] leading-tight space-y-0.5">
+            <Row label="Estilo" value={item.style} />
+            <Row label="ABV" value={item.abv} />
+            <Row label="IBU" value={item.ibu} />
+            <Row label="Tamaño" value={item.size} />
+          </dl>
         </div>
-      </div>
-      <div className="grid grid-cols-4 border-t border-border pt-2.5 gap-2">
-        <Stat label="ABV" value={item.abv} />
-        <Stat label="IBU" value={item.ibu} />
-        <Stat label="Vol" value={item.size} />
-        <Stat label="Precio" value={item.price} align="end" />
+      </button>
+      <div className="px-4 pb-4 pt-1 border-t border-border/60 flex items-center justify-between gap-3">
+        <span className="text-lg font-extrabold tracking-tight text-accent">
+          {item.price}
+        </span>
+        <button
+          type="button"
+          onClick={() => setOpen((o) => !o)}
+          aria-label="Expandir"
+          className="w-7 h-7 grid place-items-center text-muted-foreground hover:text-ink"
+        >
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className={`transition-transform ${open ? "rotate-180" : ""}`}
+          >
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </button>
       </div>
     </article>
   );
 }
 
-function Stat({
-  label,
-  value,
-  align = "start",
-}: {
-  label: string;
-  value: string;
-  align?: "start" | "end";
-}) {
+function Row({ label, value }: { label: string; value: string }) {
   return (
-    <div className={`flex flex-col ${align === "end" ? "items-end text-right" : ""}`}>
-      <span className="font-mono text-[9px] uppercase opacity-40 mb-0.5 tracking-wider">
-        {label}
-      </span>
-      <span className="text-xs font-bold leading-tight">{value}</span>
+    <div className="flex gap-1.5">
+      <dt className="font-bold shrink-0">{label}:</dt>
+      <dd className="text-muted-foreground truncate">{value}</dd>
     </div>
   );
 }
