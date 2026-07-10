@@ -36,7 +36,7 @@ function Licores() {
         {Object.entries(LICORES).map(([cat, items]) => (
           <section key={cat}>
             <header className="border-t border-border pt-8 pb-4 mb-2">
-              <p className="font-serif italic text-accent text-sm mb-1">Categoría</p>
+              <p className="font-serif italic text-gold text-sm mb-1">Categoría</p>
               <h2 className="text-3xl font-extrabold tracking-tighter uppercase leading-none">
                 {cat}
               </h2>

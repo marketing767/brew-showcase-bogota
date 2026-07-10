@@ -26,7 +26,7 @@ function Nosotros() {
   return (
     <MenuShell>
       <header className="px-5 pt-10 pb-6">
-        <p className="font-serif italic text-accent text-lg mb-2">
+        <p className="font-serif italic text-gold text-lg mb-2">
           Una casa para los que aman la cerveza.
         </p>
         <h1 className="text-5xl font-extrabold tracking-tighter uppercase leading-[0.85] mb-4 text-balance">
@@ -43,7 +43,7 @@ function Nosotros() {
       <Marquee />
 
       <section className="px-5 pt-10 pb-6">
-        <p className="font-serif italic text-accent text-sm mb-1">Galería</p>
+        <p className="font-serif italic text-gold text-sm mb-1">Galería</p>
         <h2 className="text-3xl font-extrabold tracking-tighter uppercase leading-none mb-6">
           La casa
         </h2>
@@ -67,7 +67,7 @@ function Nosotros() {
       </section>
 
       <section className="px-5 pt-12 pb-6 border-t border-border mt-8">
-        <p className="font-serif italic text-accent text-sm mb-1">Visítanos</p>
+        <p className="font-serif italic text-gold text-sm mb-1">Visítanos</p>
         <h2 className="text-3xl font-extrabold tracking-tighter uppercase leading-none mb-6">
           Encuéntranos
         </h2>

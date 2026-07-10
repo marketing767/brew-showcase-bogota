@@ -19,7 +19,7 @@ export function BeerCard({ item, index }: { item: BeerItem; index: number }) {
           <h3 className="text-2xl font-extrabold tracking-tighter uppercase leading-[0.9] mb-1 text-balance">
             {item.name}
           </h3>
-          <p className="text-[10px] font-bold text-accent uppercase tracking-[0.2em]">
+          <p className="text-[10px] font-bold text-gold uppercase tracking-[0.2em]">
             {item.style}
           </p>
         </div>
