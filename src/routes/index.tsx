@@ -28,13 +28,13 @@ function Home() {
     <div className="min-h-screen bg-paper text-ink">
       <div className="max-w-[430px] mx-auto border-x border-border min-h-screen flex flex-col">
         {/* HEADER */}
-        <nav className="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b border-border px-5 py-4 flex justify-center items-center">
-          <img
-            src={logo.url}
-            alt="Beer Lovers Bogotá"
-            className="h-20 w-auto object-contain"
-          />
+        <nav className="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b border-border px-5 py-3 flex justify-end items-center">
+          <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground">
+            Pq. 93 · Bogotá
+          </div>
         </nav>
+
+
 
 
 
@@ -100,10 +100,15 @@ function Home() {
 
         {/* FOOTER */}
         <footer className="px-5 py-10 mt-auto">
-          <p className="font-serif italic text-gold text-sm mb-2">Beer Lovers</p>
+          <img
+            src={logo.url}
+            alt="Beer Lovers Bogotá"
+            className="h-24 w-auto object-contain mb-4 -ml-2"
+          />
           <p className="text-xs text-muted-foreground leading-relaxed">
             Parque de la 93 · Bogotá, Colombia
           </p>
+
           <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground/60 mt-6">
             Disfruta con responsabilidad
           </p>
