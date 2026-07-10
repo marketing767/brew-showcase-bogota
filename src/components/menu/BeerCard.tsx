@@ -18,9 +18,9 @@ export function BeerCard({ item, index }: { item: BeerItem; index: number }) {
             src={item.image}
             alt={item.name}
             loading="lazy"
-            className="max-h-full max-w-full object-contain mix-blend-screen"
-            style={{ filter: "drop-shadow(0 4px 8px rgba(0,0,0,0.4))" }}
+            className="max-h-full max-w-full object-contain"
           />
+
         </div>
         <div className="flex-1 min-w-0">
           <h3 className="text-lg font-extrabold tracking-tight uppercase leading-[1] mb-2 text-balance">
