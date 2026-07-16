@@ -26,13 +26,12 @@ export function MoodMatch() {
               key={mood.id}
               type="button"
               onClick={() => setActiveId(isActive ? null : mood.id)}
-              className={`rounded-2xl border px-4 py-4 text-left transition-colors ${
+              className={`rounded-2xl border px-4 py-5 text-left transition-colors ${
                 isActive
                   ? "bg-accent text-paper border-accent"
                   : "border-border hover:bg-accent/5"
               }`}
             >
-              <span className="text-2xl block mb-2">{mood.emoji}</span>
               <span className="text-sm font-extrabold uppercase tracking-tight leading-tight block">
                 {mood.label}
               </span>
