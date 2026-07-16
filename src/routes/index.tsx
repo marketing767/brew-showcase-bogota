@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Marquee } from "@/components/menu/Marquee";
+import { MoodMatch } from "@/components/menu/MoodMatch";
 import { CATEGORIES, HERO_IMAGES } from "@/lib/menu-data";
 import logo from "@/assets/beer-lovers-logo.png.asset.json";
 
@@ -59,6 +60,9 @@ function Home() {
 
         {/* MARQUEE */}
         <Marquee />
+
+        {/* MOOD MATCH */}
+        <MoodMatch />
 
         {/* CATEGORY GRID */}
         <section className="grid grid-cols-2 border-b border-border">
