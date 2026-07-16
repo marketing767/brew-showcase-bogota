@@ -3,7 +3,7 @@ import { useState } from "react";
 import { MenuShell } from "@/components/menu/MenuShell";
 import { SectionHero } from "@/components/menu/SectionHero";
 import { StickyTabs } from "@/components/menu/StickyTabs";
-import { FoodCard } from "@/components/menu/FoodCard";
+import { DrinkCard } from "@/components/menu/DrinkCard";
 import { COCKTAILS, MOCKTAILS, SHOTS, HERO_IMAGES } from "@/lib/menu-data";
 import type { FoodItem } from "@/lib/menu-data";
 
@@ -68,7 +68,7 @@ function Section({
       </header>
       <div className="px-5 space-y-4 pb-6">
         {items.map((item, i) => (
-          <FoodCard key={item.name} item={item} index={i} />
+          <DrinkCard key={item.name} item={item} index={i} />
         ))}
       </div>
     </section>
