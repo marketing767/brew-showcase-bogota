@@ -80,13 +80,7 @@ function Home() {
                     : "hover:bg-accent/5 active:bg-accent/10"
                 }`}
               >
-                <span
-                  className={`font-mono text-[10px] mb-3 block ${
-                    isAccent ? "opacity-70" : "opacity-50"
-                  }`}
-                >
-                  ({cat.num})
-                </span>
+                
                 <h2 className="text-[1.7rem] font-extrabold tracking-tighter uppercase leading-[0.9] mb-1">
                   {cat.label}
                 </h2>
