@@ -622,3 +622,16 @@ export const MOODS: Mood[] = [
     ],
   },
 ];
+
+export const OPENING_HOURS = [
+     { day: "Lunes", hours: "14:30 – 22:00" },
+     { day: "Martes", hours: "14:30 – 22:00" },
+     { day: "Miércoles", hours: "14:30 – 23:00" },
+     { day: "Jueves", hours: "14:30 – 24:00" },
+     { day: "Viernes", hours: "13:00 – 01:00" },
+     { day: "Sábado", hours: "13:00 – 01:00" },
+     { day: "Domingo", hours: "Sin servicio" },
+     { day: "Festivos", hours: "Sin servicio" },
+   ];
+
+   export const MAPS_URL = "https://maps.app.goo.gl/3FDKZa3Zsdco8rV1A";
