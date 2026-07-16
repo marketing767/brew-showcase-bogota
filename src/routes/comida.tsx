@@ -45,7 +45,6 @@ function Comida() {
         eyebrow="Para acompañar"
         title="Comida"
         description="Un menú pensado para equilibrar y realzar la frescura de tu bebida favorita."
-        image={HERO_IMAGES.comida}
       />
       <StickyTabs tabs={TABS} active={active} onChange={setActive} />
 
