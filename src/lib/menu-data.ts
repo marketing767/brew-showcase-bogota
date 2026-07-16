@@ -49,16 +49,6 @@ export const BRAND_MARQUEE = [
   "BRUGSE ZOT", "FLORIS", "ABBAYE", "WEIHENSTEPHAN", "INNIS & GUNN",
 ];
 
-export const DRAFT: BeerItem[] = [
-  { name: "Delirium Tremens", style: "Belgian Golden Strong Ale", abv: "8.5%", ibu: "24.5", size: "330ml — 500ml", price: "$35.000 — $42.000", image: "https://framerusercontent.com/images/MypcHJhOlICI3Bk0asqKTYSxSsA.png" },
-  { name: "Delirium Red", style: "Strong Fruit Beer", abv: "8%", ibu: "20", size: "330ml — 500ml", price: "$35.000 — $42.000", image: "https://framerusercontent.com/images/gSB2YNHQPDG4v37uRb4NZ5J28w.png" },
-  { name: "Gulden Draak", style: "Según disponibilidad", abv: "10.5%", ibu: "25 — 30", size: "330ml — 500ml", price: "$35.000 — $42.000", image: "https://framerusercontent.com/images/GTqx0orNnOyGQVrmzEzznCibY.png" },
-  { name: "Adnams Ghost Ship", style: "Pale Ale", abv: "4.6%", ibu: "40", size: "500ml", price: "$28.000", image: "https://framerusercontent.com/images/hTuaURI5iGNuAOlRrLoMSVCow.png" },
-  { name: "Lino", style: "New England IPA (NEIPA)", abv: "7%", ibu: "45", size: "330ml", price: "$24.000", image: "https://framerusercontent.com/images/BOiQD9VwIRvspTbqRCf4o2uVfXc.png" },
-];
-
-export const CERVEZAS_BELGICA: BeerItem[] = [
-  { name: "Delirium Tremens", style: "Belgian Golden Strong Ale", abv: "8.5%", ibu: "24.5", size: "330ml", price: "$35.000", image: "https://framerusercontent.com/images/eo25TEknojTk1Nas0UuCKzRbcg.png" },
 // Notas de cata basadas en los perfiles publicados por cada cervecería.
 const N = {
   deliriumTremens: {
