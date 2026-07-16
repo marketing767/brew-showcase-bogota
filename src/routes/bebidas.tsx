@@ -66,7 +66,7 @@ function Section({
           {title}
         </h2>
       </header>
-      <div className="px-5 space-y-10 pb-6">
+      <div className="px-5 space-y-4 pb-6">
         {items.map((item, i) => (
           <FoodCard key={item.name} item={item} index={i} />
         ))}
