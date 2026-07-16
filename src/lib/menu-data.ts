@@ -542,3 +542,82 @@ export const CATEGORIES = [
   { num: "05", label: "Licores", to: "/licores", caption: "Selección exclusiva" },
   { num: "06", label: "Nosotros", to: "/nosotros", caption: "Nuestra historia" },
 ];
+
+export type MoodBeer = {
+  name: string;
+  image: string;
+  price: string;
+  reason: string;
+  category: string;
+};
+
+export type Mood = {
+  id: string;
+  emoji: string;
+  label: string;
+  tagline: string;
+  beers: MoodBeer[];
+};
+
+export const MOODS: Mood[] = [
+  {
+    id: "celebrar",
+    emoji: "🎉",
+    label: "Para celebrar",
+    tagline: "Algo con carácter, para un buen momento.",
+    beers: [
+      { name: "Duvel", image: "https://framerusercontent.com/images/SOqyMiN1rOzaBcKBuNPcVfXkNqI.png", price: "$42.000", reason: "Dorada, seca y con burbuja fina — perfecta para un brindis.", category: "/cervezas" },
+      { name: "Chimay Triple", image: "https://framerusercontent.com/images/gmGsNmqaVKMs4wWqFoMTMIkLYGQ.png", price: "$36.000", reason: "Trapense clásica, elegante y festiva.", category: "/cervezas" },
+    ],
+  },
+  {
+    id: "tranquilo",
+    emoji: "🌙",
+    label: "Día tranquilo",
+    tagline: "Ligera, fácil de tomar, sin apuro.",
+    beers: [
+      { name: "St Idesbald", image: "https://framerusercontent.com/images/z8UTnmWbztKAjLbBasfaPB7zimI.png", price: "$26.000", reason: "Blonde suave y equilibrada, ideal para relajarte.", category: "/cervezas" },
+      { name: "Brugse Zot", image: "https://framerusercontent.com/images/E4dDobmrZnRDdTnEEkwu9Aaek.png", price: "$36.000", reason: "Refrescante, poco intensa, para una charla lenta.", category: "/cervezas" },
+    ],
+  },
+  {
+    id: "calor",
+    emoji: "☀️",
+    label: "Calor intenso",
+    tagline: "Refrescante y ligera.",
+    beers: [
+      { name: "Prazacka Svetla Desitka", image: "https://framerusercontent.com/images/qGr3OYdqSXCAWQRXmhrcTSiJbU.png", price: "$26.000", reason: "Pilsner checa, crujiente y muy refrescante.", category: "/cervezas" },
+      { name: "Floris Passion", image: "https://framerusercontent.com/images/qracfmDVegCRVrxlFp2Sqrx4Dk.png", price: "$32.000", reason: "Trigo con maracuyá — tropical y helada.", category: "/cervezas" },
+    ],
+  },
+  {
+    id: "noche",
+    emoji: "🔥",
+    label: "Noche de charla",
+    tagline: "Con cuerpo, para conversar despacio.",
+    beers: [
+      { name: "Chimay Blue", image: "https://framerusercontent.com/images/yBnUolXISflUZ7St0VLe71CnsC8.png", price: "$38.000", reason: "Oscura, especiada, se disfruta con calma.", category: "/cervezas" },
+      { name: "Gulden Draak Classic", image: "https://framerusercontent.com/images/92oOJsepQV3FlJSE0Ru8XigZHA.png", price: "$35.000", reason: "Dark strong con carácter para una velada larga.", category: "/cervezas" },
+    ],
+  },
+  {
+    id: "fiesta",
+    emoji: "🎊",
+    label: "Fiesta con amigos",
+    tagline: "Jugosa, llamativa, para compartir.",
+    beers: [
+      { name: "Lino", image: "https://framerusercontent.com/images/BOiQD9VwIRvspTbqRCf4o2uVfXc.png", price: "$24.000", reason: "NEIPA jugosa y frutal, la favorita para grupos.", category: "/draft" },
+      { name: "La Chouffe", image: "https://framerusercontent.com/images/sq3ZdhmRjJK56LYJqoUHNveKl4o.png", price: "$39.000", reason: "Blonde con cilantro, fresca y distinta.", category: "/cervezas" },
+    ],
+  },
+  {
+    id: "frio",
+    emoji: "❄️",
+    label: "Clima frío",
+    tagline: "Cálida y con cuerpo.",
+    beers: [
+      { name: "Erdinger Pikantus", image: "https://framerusercontent.com/images/3xwk7eBhgJLXJySazHPaCI4nlc.png", price: "$38.000", reason: "Weizenbock intensa, ideal para el frío bogotano.", category: "/cervezas" },
+      { name: "Innis & Gunn Original", image: "https://framerusercontent.com/images/h7QDceM5b1aYndBu3UbhVRkLA.png", price: "$35.000", reason: "Madurada en roble, notas de vainilla y calidez.", category: "/cervezas" },
+    ],
+  },
+];
