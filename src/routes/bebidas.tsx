@@ -36,11 +36,10 @@ function Bebidas() {
   return (
     <MenuShell>
       <SectionHero
-        eyebrow="Coctelería"
-        title="Bebidas"
-        description="Cócteles de autor que combinan tradición y vanguardia."
-        image={HERO_IMAGES.bebidas}
-      />
+  eyebrow="Coctelería"
+  title="Bebidas"
+  description="Cócteles de autor que combinan tradición y vanguardia."
+/>
       <StickyTabs tabs={TABS} active={active} onChange={setActive} />
 
       <Section id="cocktails" title="Cocktails" items={COCKTAILS} />
