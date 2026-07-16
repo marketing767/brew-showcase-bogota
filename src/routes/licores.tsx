@@ -50,7 +50,7 @@ function Licores() {
                   <span className="text-sm font-bold uppercase tracking-tight leading-snug text-balance flex-1 min-w-0">
                     {item.name}
                   </span>
-                  <span className="font-mono text-xs font-bold whitespace-nowrap text-accent">
+                  <span className="font-mono text-xs font-bold whitespace-nowrap text-gold">
                     {item.price}
                   </span>
                 </li>
