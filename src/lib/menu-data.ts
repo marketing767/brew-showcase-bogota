@@ -1,6 +1,15 @@
 // Beer Lovers — menú original (textos e imágenes desde stacks.menu/beerlovers).
 // Las imágenes se referencian directamente desde el CDN de Framer del menú original.
 
+export type TastingNotes = {
+  description?: string;
+  apariencia?: string;
+  aroma?: string;
+  sabor?: string;
+  cuerpo?: string;
+  final?: string;
+};
+
 export type BeerItem = {
   name: string;
   style: string;
@@ -9,7 +18,9 @@ export type BeerItem = {
   size: string;
   price: string;
   image: string;
+  notes?: TastingNotes;
 };
+
 
 export type FoodItem = {
   name: string;
