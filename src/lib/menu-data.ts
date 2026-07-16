@@ -408,7 +408,7 @@ export const CERVEZAS_ESCOCIA: BeerItem[] = [
 
 
 export const COMIDA_ENTRADAS: FoodItem[] = [
-  { name: "Patatas Bravas", description: "Papas fritas en casco, bañadas con salsa brava de la casa.", price: "$20.000", image: "https://framerusercontent.com/images/aebiBoMWF0Vcdq5lsAHEzxQTcc.webp" },
+  { name: "Patatas Bravas", description: "Papas fritas en casco, bañadas con salsa brava de la casa.", price: "$20.000", image: "https://framerusercontent.com/images/aebiBoMWF0Vcdq5lsAHEzxQTcc.webp", spicy: true },
   { name: "Chicharroncitos", description: "Trocitos de chicharrón carnudo crocante acompañados con guacamole de la casa.", price: "$38.000", image: "https://framerusercontent.com/images/DCreA7X4KCJMjmue8RAlGG4JW0.webp" },
   { name: "Tentáculos de Mazorca", description: "Mazorca dulce en forma de tentáculos, con salsa agria de la casa.", price: "$31.000", image: "https://framerusercontent.com/images/xYiLYpOIhpPyiqwMAtp67vBgQGA.webp" },
   { name: "Buñuelitos de Queso", description: "Buñuelitos de queso costeño apanados, acompañados con salsa BBQ dulce.", price: "$28.000", image: "https://framerusercontent.com/images/mhFF8DjYA1pGCHTn1OcTQVTGQ.webp" },
