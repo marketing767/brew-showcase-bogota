@@ -42,7 +42,7 @@ export function BeerCard({ item, index }: { item: BeerItem; index: number }) {
         <button
           type="button"
           onClick={() => setOpen((o) => !o)}
-          aria-label="Expandir"
+          aria-label={open ? "Contraer" : "Ver notas de cata"}
           className="w-7 h-7 grid place-items-center text-muted-foreground hover:text-ink"
         >
           <svg
@@ -60,9 +60,43 @@ export function BeerCard({ item, index }: { item: BeerItem; index: number }) {
           </svg>
         </button>
       </div>
+      {open && item.notes && (
+        <div className="px-4 pb-5 pt-3 border-t border-border/60 space-y-3 animate-reveal">
+          {item.notes.description && (
+            <p className="text-[13px] leading-relaxed text-ink/90 text-pretty">
+              {item.notes.description}
+            </p>
+          )}
+          <div className="pt-1">
+            <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-gold mb-2">
+              Notas de cata
+            </p>
+            <dl className="text-[12px] leading-snug space-y-1.5">
+              <NoteRow label="Apariencia" value={item.notes.apariencia} />
+              <NoteRow label="Aroma" value={item.notes.aroma} />
+              <NoteRow label="Sabor" value={item.notes.sabor} />
+              <NoteRow label="Cuerpo" value={item.notes.cuerpo} />
+              <NoteRow label="Final" value={item.notes.final} />
+            </dl>
+          </div>
+        </div>
+      )}
     </article>
   );
 }
+
+function NoteRow({ label, value }: { label: string; value?: string }) {
+  if (!value) return null;
+  return (
+    <div className="flex flex-col gap-0.5">
+      <dt className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-muted-foreground">
+        {label}
+      </dt>
+      <dd className="text-ink/90 text-pretty">{value}</dd>
+    </div>
+  );
+}
+
 
 function Row({ label, value }: { label: string; value: string }) {
   return (
