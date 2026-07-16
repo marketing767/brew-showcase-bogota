@@ -536,7 +536,7 @@ export const NOSOTROS_GALLERY = [
 
 export const CATEGORIES = [
   { num: "01", label: "Draft", to: "/draft", caption: "Cervezas de barril" },
-  { num: "02", label: "Cervezas", to: "/cervezas", caption: "Bélgica · Alemania · Otros" },
+  { num: "02", label: "Cervezas", to: "/cervezas", caption: "Bélgica · Alemania · UK · Checa · Escocia" },
   { num: "03", label: "Comida", to: "/comida", caption: "Para acompañar" },
   { num: "04", label: "Bebidas", to: "/bebidas", caption: "Cocktails & mocktails" },
   { num: "05", label: "Licores", to: "/licores", caption: "Selección exclusiva" },
