@@ -24,10 +24,14 @@ export function FoodCard({ item, index }: { item: FoodItem; index: number }) {
               role="img"
               aria-label="Picante"
               title="Picante"
-              className="shrink-0 text-accent"
+              className="shrink-0 w-7 h-7 rounded-full flex items-center justify-center"
+              style={{ backgroundColor: "#3D1408" }}
             >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2c1 3-2 4-2 7a3 3 0 0 0 6 0c0-1-.5-2-1-2 1 0 3 2 3 5a6 6 0 0 1-12 0c0-5 4-6 4-10a3 3 0 0 1 2-0z" />
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M9 3.5c.6 1 .3 1.8-.3 2.6C7.4 7.5 6 9.2 6 12.5 6 16.6 9 19 12.5 19c3.9 0 6.5-2.8 6.5-6.2 0-2-1-3.5-2.3-4.3-.4-.2-.7 0-.6.5.3 1.2 0 2.3-.8 2.3-.9 0-1-1-.7-2 .5-1.7-.2-3.3-1.6-4.3-.4-.3-.8 0-.7.5.4 1.4-.4 2.2-1.2 1.5-.9-.8-1-2.2-1.2-3.5-.1-.5-.5-.6-.9-0z"
+                  fill="#FF6A3D"
+                />
               </svg>
             </span>
           )}
