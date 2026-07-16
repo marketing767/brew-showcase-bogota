@@ -1,6 +1,15 @@
 // Beer Lovers — menú original (textos e imágenes desde stacks.menu/beerlovers).
 // Las imágenes se referencian directamente desde el CDN de Framer del menú original.
 
+export type TastingNotes = {
+  description?: string;
+  apariencia?: string;
+  aroma?: string;
+  sabor?: string;
+  cuerpo?: string;
+  final?: string;
+};
+
 export type BeerItem = {
   name: string;
   style: string;
@@ -9,7 +18,9 @@ export type BeerItem = {
   size: string;
   price: string;
   image: string;
+  notes?: TastingNotes;
 };
+
 
 export type FoodItem = {
   name: string;
@@ -38,67 +49,362 @@ export const BRAND_MARQUEE = [
   "BRUGSE ZOT", "FLORIS", "ABBAYE", "WEIHENSTEPHAN", "INNIS & GUNN",
 ];
 
+// Notas de cata basadas en los perfiles publicados por cada cervecería.
+const N = {
+  deliriumTremens: {
+    description: "Ícono belga de fermentación triple. Aroma cítrico y afrutado con cuerpo cremoso y final seco de alta graduación.",
+    apariencia: "Dorada pálida con espuma blanca densa y persistente.",
+    aroma: "Notas cítricas, plátano maduro, especias y malta clara.",
+    sabor: "Malta dulce equilibrada con toques frutales y un final especiado.",
+    cuerpo: "Medio, con carbonatación viva y cremosidad marcada.",
+    final: "Seco, cálido y ligeramente amargo.",
+  },
+  deliriumNocturnum: {
+    description: "Belgian Dark Strong Ale rica en maltas oscuras, fruta madura y toques de chocolate.",
+    apariencia: "Marrón caoba con espuma cremosa color crema.",
+    aroma: "Frutos rojos, ciruela pasa, caramelo y toques a chocolate.",
+    sabor: "Malta tostada, fruta oscura, ligero picante de levadura belga.",
+    cuerpo: "Medio a lleno, aterciopelado.",
+    final: "Cálido, dulzón y ligeramente especiado.",
+  },
+  deliriumChristmas: {
+    description: "Winter Ale de temporada, robusta y especiada, ideal para climas fríos.",
+    apariencia: "Rojiza oscura con espuma abundante beige.",
+    aroma: "Caramelo, canela, ciruela y notas alcohólicas cálidas.",
+    sabor: "Malta caramelizada, frutas confitadas y especias navideñas.",
+    cuerpo: "Lleno, licoroso.",
+    final: "Cálido, dulce y prolongado.",
+  },
+  deliriumArgentum: {
+    description: "Belgian IPA que combina la fruta de la levadura belga con lúpulos americanos.",
+    apariencia: "Dorada brillante con espuma blanca compacta.",
+    aroma: "Cítricos, maracuyá, pino y toques a levadura belga.",
+    sabor: "Amargor firme, frutal, con base maltosa clara.",
+    cuerpo: "Medio, carbonatación alta.",
+    final: "Seco y amargo, con recuerdos cítricos.",
+  },
+  deliriumRed: {
+    description: "Strong Ale belga con infusión de cereza natural. Dulce, afrutada y refrescante.",
+    apariencia: "Rojo rubí intenso con espuma rosada.",
+    aroma: "Cereza fresca, almendra dulce y malta.",
+    sabor: "Cereza natural equilibrada con toques ácidos y malta.",
+    cuerpo: "Medio, cremoso.",
+    final: "Frutal, dulce y ligeramente ácido.",
+  },
+  guldenDraak9000: {
+    description: "Quadrupel dorado, fuerte y complejo, madurado sobre lías.",
+    apariencia: "Dorada intensa con espuma cremosa persistente.",
+    aroma: "Fruta madura, caramelo claro, especias y alcohol suave.",
+    sabor: "Malta dulce, frutal, especiado y con calidez alcohólica.",
+    cuerpo: "Lleno y sedoso.",
+    final: "Largo, cálido y ligeramente seco.",
+  },
+  guldenDraakClassic: {
+    description: "Dark Triple belga: color oscuro con la potencia de una triple.",
+    apariencia: "Marrón oscuro con espuma color crema.",
+    aroma: "Caramelo tostado, ciruela, malta chocolate y levadura belga.",
+    sabor: "Dulzor maltoso, fruta oscura y notas licorosas.",
+    cuerpo: "Lleno, aterciopelado.",
+    final: "Prolongado, cálido y suavemente amargo.",
+  },
+  abbayePremierCru: {
+    description: "Blonde Strong Ale de abadía, elegante y de alta fermentación.",
+    apariencia: "Dorada brillante con espuma blanca fina.",
+    aroma: "Miel, cítricos, especias suaves y levadura belga.",
+    sabor: "Malta dulce con toques afrutados y final especiado.",
+    cuerpo: "Medio, con carbonatación viva.",
+    final: "Seco y ligeramente cálido.",
+  },
+  abbayeBrune: {
+    description: "Dubbel clásica de abadía, rica en maltas oscuras y fruta seca.",
+    apariencia: "Marrón rojiza con espuma beige compacta.",
+    aroma: "Caramelo, pasas, higo y toques a pan tostado.",
+    sabor: "Malta caramelizada, fruta oscura y suave especia.",
+    cuerpo: "Medio, cremoso.",
+    final: "Dulzón con toque seco final.",
+  },
+  florisFramboise: {
+    description: "Cerveza de trigo con infusión natural de frambuesa. Refrescante y afrutada.",
+    apariencia: "Rojo rosado brillante con espuma rosada.",
+    aroma: "Frambuesa fresca y trigo suave.",
+    sabor: "Frambuesa natural, ligeramente ácida y dulce.",
+    cuerpo: "Ligero, muy carbonatado.",
+    final: "Refrescante y afrutado.",
+  },
+  florisPassion: {
+    description: "Cerveza de trigo con maracuyá, tropical y aromática.",
+    apariencia: "Amarillo dorado turbio con espuma blanca.",
+    aroma: "Maracuyá intenso y trigo.",
+    sabor: "Maracuyá fresco, dulzor equilibrado y trigo suave.",
+    cuerpo: "Ligero, refrescante.",
+    final: "Tropical y limpio.",
+  },
+  stIdesbald: {
+    description: "Blonde Ale de abadía belga, equilibrada y accesible.",
+    apariencia: "Dorada con espuma blanca cremosa.",
+    aroma: "Malta dulce, cítricos y levadura belga.",
+    sabor: "Malta clara, ligera fruta y amargor moderado.",
+    cuerpo: "Medio.",
+    final: "Seco y limpio.",
+  },
+  duvel: {
+    description: "Golden Strong Ale de referencia mundial. Fermentación en botella y triple carbonatación.",
+    apariencia: "Dorada pálida con espuma blanca enorme y persistente.",
+    aroma: "Cítricos, pera, levadura belga y lúpulo noble.",
+    sabor: "Malta seca, frutal y amargor elegante.",
+    cuerpo: "Medio, muy carbonatado.",
+    final: "Seco, largo y amargo fino.",
+  },
+  straffeHendrik9: {
+    description: "Triple belga de la abadía de Brujas, especiada y expresiva.",
+    apariencia: "Dorada intensa con espuma cremosa.",
+    aroma: "Especias, cítricos y malta clara.",
+    sabor: "Malta dulce con notas frutales y final amargo.",
+    cuerpo: "Medio a lleno.",
+    final: "Cálido, seco y especiado.",
+  },
+  straffeHendrik11: {
+    description: "Quadruple belga potente y compleja, envejecida.",
+    apariencia: "Marrón oscuro con espuma color crema.",
+    aroma: "Fruta seca, caramelo oscuro, chocolate y licor.",
+    sabor: "Malta rica, ciruela pasa, cacao y alcohol cálido.",
+    cuerpo: "Lleno, licoroso.",
+    final: "Largo, cálido y complejo.",
+  },
+  brugseZot: {
+    description: "Blonde Ale de Brujas, refrescante y accesible.",
+    apariencia: "Dorada con espuma blanca compacta.",
+    aroma: "Malta clara, lúpulo floral y toque cítrico.",
+    sabor: "Equilibrada, maltosa con amargor limpio.",
+    cuerpo: "Medio-ligero.",
+    final: "Seco y refrescante.",
+  },
+  brugseZotDubbel: {
+    description: "Dubbel de Brujas, maltosa y frutal.",
+    apariencia: "Marrón rojiza con espuma beige.",
+    aroma: "Caramelo, fruta oscura y especias.",
+    sabor: "Malta caramelizada, ciruela y toque especiado.",
+    cuerpo: "Medio, cremoso.",
+    final: "Dulzón con toque seco.",
+  },
+  laChouffe: {
+    description: "Blonde Ale de las Ardenas, con toques de cilantro.",
+    apariencia: "Dorada brumosa con espuma blanca.",
+    aroma: "Cítricos, cilantro, malta y levadura frutal.",
+    sabor: "Malta dulce, frutal y ligero especiado.",
+    cuerpo: "Medio, carbonatación viva.",
+    final: "Seco y ligeramente picante.",
+  },
+  chimayBlue: {
+    description: "Trapense de referencia. Robusta, especiada y de guarda.",
+    apariencia: "Marrón oscura con espuma cremosa color crema.",
+    aroma: "Caramelo, fruta oscura, especias y ligero cacao.",
+    sabor: "Malta rica, ciruela, higo y calidez alcohólica.",
+    cuerpo: "Lleno y aterciopelado.",
+    final: "Largo, cálido y complejo.",
+  },
+  chimayTriple: {
+    description: "Trapense triple, dorada y con carácter especiado.",
+    apariencia: "Dorada intensa con espuma blanca densa.",
+    aroma: "Lúpulo floral, cítricos, malta clara y levadura.",
+    sabor: "Malta seca, frutal y amargor elegante.",
+    cuerpo: "Medio, muy carbonatado.",
+    final: "Seco, especiado y persistente.",
+  },
+  chimayBrown: {
+    description: "Trapense dubbel, maltosa y frutal.",
+    apariencia: "Marrón cobriza con espuma beige.",
+    aroma: "Caramelo, pasas, especias y levadura belga.",
+    sabor: "Malta caramelizada, fruta seca y toque tostado.",
+    cuerpo: "Medio, redondo.",
+    final: "Suave, dulzón y equilibrado.",
+  },
+  // Alemania
+  schofferhofer: {
+    description: "Hefe Weizen bávara de trigo, refrescante y afrutada.",
+    apariencia: "Dorada turbia con espuma blanca muy densa.",
+    aroma: "Plátano, clavo y trigo.",
+    sabor: "Trigo suave, plátano maduro y ligera especia.",
+    cuerpo: "Medio, cremoso.",
+    final: "Suave y refrescante.",
+  },
+  schofferhoferDunkel: {
+    description: "Weissbier oscura con maltas tostadas y notas de caramelo.",
+    apariencia: "Marrón caoba con espuma beige.",
+    aroma: "Pan tostado, caramelo, plátano y clavo.",
+    sabor: "Malta tostada, trigo y toque frutal.",
+    cuerpo: "Medio, sedoso.",
+    final: "Maltoso y equilibrado.",
+  },
+  schofferhoferGrapefruit: {
+    description: "Mezcla de Weissbier con toronja natural. Baja graduación, muy refrescante.",
+    apariencia: "Amarillo turbio con espuma blanca.",
+    aroma: "Toronja fresca y trigo.",
+    sabor: "Cítrico brillante, dulzor moderado y trigo.",
+    cuerpo: "Ligero, muy carbonatado.",
+    final: "Refrescante y cítrico.",
+  },
+  erdingerWeissbier: {
+    description: "Hefe Weizen bávara clásica, referencia del estilo.",
+    apariencia: "Dorada turbia con espuma blanca abundante.",
+    aroma: "Plátano, clavo, trigo y levadura.",
+    sabor: "Trigo cremoso, frutal y suavemente especiado.",
+    cuerpo: "Medio, muy carbonatado.",
+    final: "Limpio y refrescante.",
+  },
+  erdingerPikantus: {
+    description: "Weizenbock oscura, fuerte y compleja.",
+    apariencia: "Marrón rojiza con espuma cremosa color crema.",
+    aroma: "Plátano maduro, caramelo, clavo y ciruela.",
+    sabor: "Malta rica, trigo, fruta oscura y calidez alcohólica.",
+    cuerpo: "Lleno, cremoso.",
+    final: "Cálido, maltoso y prolongado.",
+  },
+  clausthaler: {
+    description: "Lager alemana sin alcohol, elaborada bajo la ley de pureza.",
+    apariencia: "Dorada brillante con espuma blanca.",
+    aroma: "Malta clara y lúpulo noble suave.",
+    sabor: "Ligeramente maltosa, limpia y equilibrada.",
+    cuerpo: "Ligero.",
+    final: "Seco y refrescante.",
+  },
+  dab: {
+    description: "Dortmunder Export clásica, seca y equilibrada.",
+    apariencia: "Dorada brillante con espuma blanca.",
+    aroma: "Malta pilsner y lúpulo noble.",
+    sabor: "Malta suave, amargor moderado y limpieza pilsner.",
+    cuerpo: "Medio-ligero.",
+    final: "Seco y equilibrado.",
+  },
+  // Reino Unido
+  adnamsInnovationIpa: {
+    description: "English IPA moderna con lúpulos americanos y del nuevo mundo.",
+    apariencia: "Dorada intensa con espuma blanca.",
+    aroma: "Cítricos, fruta tropical y pino.",
+    sabor: "Amargor firme con base maltosa galleta.",
+    cuerpo: "Medio.",
+    final: "Amargo, seco y persistente.",
+  },
+  adnamsGhostShip: {
+    description: "Pale Ale de Southwold con perfil cítrico y refrescante.",
+    apariencia: "Dorada pálida con espuma blanca.",
+    aroma: "Limón, pomelo y malta suave.",
+    sabor: "Cítrico brillante, malta galleta y amargor moderado.",
+    cuerpo: "Medio-ligero.",
+    final: "Seco, cítrico y refrescante.",
+  },
+  adnamsKobold: {
+    description: "Lager inglesa artesanal, seca y con lúpulo aromático.",
+    apariencia: "Dorada brillante con espuma blanca.",
+    aroma: "Lúpulo herbal, cítrico suave y malta clara.",
+    sabor: "Malta seca con amargor limpio.",
+    cuerpo: "Medio-ligero.",
+    final: "Seco, crujiente y refrescante.",
+  },
+  adnamsStout: {
+    description: "Stout inglesa clásica, tostada y suave.",
+    apariencia: "Negra profunda con espuma marrón claro.",
+    aroma: "Café, chocolate y malta tostada.",
+    sabor: "Café, cacao amargo y malta oscura.",
+    cuerpo: "Medio, cremoso.",
+    final: "Tostado y ligeramente amargo.",
+  },
+  // República Checa
+  prazackaSvetla: {
+    description: "Pale Lager checa tradicional, refrescante y de baja graduación.",
+    apariencia: "Dorada brillante con espuma blanca compacta.",
+    aroma: "Malta pilsner, pan y lúpulo Saaz.",
+    sabor: "Malta suave y amargor herbal característico checo.",
+    cuerpo: "Ligero.",
+    final: "Seco, herbal y muy refrescante.",
+  },
+  // Escocia
+  innisGunn: {
+    description: "Scottish Ale madurada sobre astillas de roble. Maltosa y con notas amaderadas.",
+    apariencia: "Ámbar dorado brillante con espuma beige.",
+    aroma: "Vainilla, caramelo, toffee y roble.",
+    sabor: "Malta caramelizada, vainilla, toque a whisky y madera.",
+    cuerpo: "Medio, sedoso.",
+    final: "Suave, dulce y prolongado con notas de roble.",
+  },
+  lino: {
+    description: "New England IPA jugosa y turbia, con perfil frutal explosivo.",
+    apariencia: "Amarillo turbio con espuma blanca cremosa.",
+    aroma: "Mango, maracuyá, durazno y cítricos.",
+    sabor: "Fruta tropical intensa, amargor suave y base maltosa cremosa.",
+    cuerpo: "Medio a lleno, jugoso.",
+    final: "Suave, frutal y de bajo amargor.",
+  },
+} as const;
+
 export const DRAFT: BeerItem[] = [
-  { name: "Delirium Tremens", style: "Belgian Golden Strong Ale", abv: "8.5%", ibu: "24.5", size: "330ml — 500ml", price: "$35.000 — $42.000", image: "https://framerusercontent.com/images/MypcHJhOlICI3Bk0asqKTYSxSsA.png" },
-  { name: "Delirium Red", style: "Strong Fruit Beer", abv: "8%", ibu: "20", size: "330ml — 500ml", price: "$35.000 — $42.000", image: "https://framerusercontent.com/images/gSB2YNHQPDG4v37uRb4NZ5J28w.png" },
-  { name: "Gulden Draak", style: "Según disponibilidad", abv: "10.5%", ibu: "25 — 30", size: "330ml — 500ml", price: "$35.000 — $42.000", image: "https://framerusercontent.com/images/GTqx0orNnOyGQVrmzEzznCibY.png" },
-  { name: "Adnams Ghost Ship", style: "Pale Ale", abv: "4.6%", ibu: "40", size: "500ml", price: "$28.000", image: "https://framerusercontent.com/images/hTuaURI5iGNuAOlRrLoMSVCow.png" },
-  { name: "Lino", style: "New England IPA (NEIPA)", abv: "7%", ibu: "45", size: "330ml", price: "$24.000", image: "https://framerusercontent.com/images/BOiQD9VwIRvspTbqRCf4o2uVfXc.png" },
+  { name: "Delirium Tremens", style: "Belgian Golden Strong Ale", abv: "8.5%", ibu: "24.5", size: "330ml — 500ml", price: "$35.000 — $42.000", image: "https://framerusercontent.com/images/MypcHJhOlICI3Bk0asqKTYSxSsA.png", notes: N.deliriumTremens },
+  { name: "Delirium Red", style: "Strong Fruit Beer", abv: "8%", ibu: "20", size: "330ml — 500ml", price: "$35.000 — $42.000", image: "https://framerusercontent.com/images/gSB2YNHQPDG4v37uRb4NZ5J28w.png", notes: N.deliriumRed },
+  { name: "Gulden Draak", style: "Según disponibilidad", abv: "10.5%", ibu: "25 — 30", size: "330ml — 500ml", price: "$35.000 — $42.000", image: "https://framerusercontent.com/images/GTqx0orNnOyGQVrmzEzznCibY.png", notes: N.guldenDraakClassic },
+  { name: "Adnams Ghost Ship", style: "Pale Ale", abv: "4.6%", ibu: "40", size: "500ml", price: "$28.000", image: "https://framerusercontent.com/images/hTuaURI5iGNuAOlRrLoMSVCow.png", notes: N.adnamsGhostShip },
+  { name: "Lino", style: "New England IPA (NEIPA)", abv: "7%", ibu: "45", size: "330ml", price: "$24.000", image: "https://framerusercontent.com/images/BOiQD9VwIRvspTbqRCf4o2uVfXc.png", notes: N.lino },
 ];
 
 export const CERVEZAS_BELGICA: BeerItem[] = [
-  { name: "Delirium Tremens", style: "Belgian Golden Strong Ale", abv: "8.5%", ibu: "24.5", size: "330ml", price: "$35.000", image: "https://framerusercontent.com/images/eo25TEknojTk1Nas0UuCKzRbcg.png" },
-  { name: "Delirium Tremens 750", style: "Belgian Golden Strong Ale", abv: "8.5%", ibu: "24.5", size: "750ml", price: "$75.000", image: "https://framerusercontent.com/images/qqADbNkCddDAMHEhgmAAk4puslc.png" },
-  { name: "Delirium Nocturnum", style: "Belgian Dark Strong Ale", abv: "8.5%", ibu: "24", size: "330ml", price: "$35.000", image: "https://framerusercontent.com/images/ANIuSVZGfG8s79TT1sf1nYA3NKw.png" },
-  { name: "Delirium Nocturnum 750", style: "Belgian Dark Strong Ale", abv: "8.5%", ibu: "24", size: "750ml", price: "$75.000", image: "https://framerusercontent.com/images/jhZIUatHPkxKqYUBLzjyDakXvIw.png" },
-  { name: "Delirium Christmas", style: "Winter Ale", abv: "10%", ibu: "26", size: "330ml", price: "$37.000", image: "https://framerusercontent.com/images/UAoo8VQDX99LGZum7k0VOQNEx8w.png" },
-  { name: "Delirium Christmas 750", style: "Winter Ale", abv: "10%", ibu: "26", size: "750ml", price: "$77.000", image: "https://framerusercontent.com/images/CiYyB9D0RNySOnEcUUySOvZnThs.png" },
-  { name: "Delirium Argentum", style: "Belgian IPA", abv: "7%", ibu: "48", size: "330ml", price: "$35.000", image: "https://framerusercontent.com/images/LewasCWKZuwFsMm0uaytecgPfU.png" },
-  { name: "Delirium Red", style: "Strong Fruit Beer", abv: "8%", ibu: "20", size: "330ml", price: "$35.000", image: "https://framerusercontent.com/images/nhLKMTN1ulMvjuW36TwoaY8Nz1s.png" },
-  { name: "Delirium Red 750", style: "Strong Fruit Beer", abv: "8%", ibu: "20", size: "750ml", price: "$75.000", image: "https://framerusercontent.com/images/CB2ZoMX3lNPg1dYGp2Ugkvu3I08.png" },
-  { name: "Gulden Draak 9000", style: "Quadruple", abv: "10.5%", ibu: "25", size: "330ml", price: "$35.000", image: "https://framerusercontent.com/images/w6hq0XedV0MMFWY6CjolEpp53E.png" },
-  { name: "Gulden Draak 9000 750", style: "Quadruple", abv: "10.5%", ibu: "25", size: "750ml", price: "$75.000", image: "https://framerusercontent.com/images/mZTV1mSE0ftWy60DGwNHQZwWgg.png" },
-  { name: "Gulden Draak Classic", style: "Dark Strong Ale", abv: "10.5%", ibu: "30", size: "330ml", price: "$35.000", image: "https://framerusercontent.com/images/92oOJsepQV3FlJSE0Ru8XigZHA.png" },
-  { name: "Gulden Draak Classic 750", style: "Dark Strong Ale", abv: "10.5%", ibu: "30", size: "750ml", price: "$75.000", image: "https://framerusercontent.com/images/wWVKsyplup5hwbgx3SjjaIHL1C0.png" },
-  { name: "Abbaye Premier Cru", style: "Blonde Strong Ale", abv: "9%", ibu: "22", size: "330ml", price: "$29.000", image: "https://framerusercontent.com/images/m6gPyQxF1FaLWPWNgJ53XCSwI.png" },
-  { name: "Abbaye Brune", style: "Belgian Dubbel", abv: "6%", ibu: "20", size: "330ml", price: "$29.000", image: "https://framerusercontent.com/images/gIbidMnrUa8PniANfcjZqltKQl0.png" },
-  { name: "Abbaye Brune 750", style: "Belgian Dubbel", abv: "6%", ibu: "20", size: "750ml", price: "$69.000", image: "https://framerusercontent.com/images/vYJildLxBXIb1NaDzrLGmR8gG4c.png" },
-  { name: "Floris Framboise", style: "Fruit Beer", abv: "3.6%", ibu: "7", size: "330ml", price: "$32.000", image: "https://framerusercontent.com/images/eTIWpHQXw1nvaMaOGdT1ZFtKk.png" },
-  { name: "Floris Passion", style: "Fruit Beer", abv: "3.6%", ibu: "12", size: "330ml", price: "$32.000", image: "https://framerusercontent.com/images/qracfmDVegCRVrxlFp2Sqrx4Dk.png" },
-  { name: "St Idesbald", style: "Blonde Ale", abv: "6.5%", ibu: "24.5", size: "330ml", price: "$26.000", image: "https://framerusercontent.com/images/z8UTnmWbztKAjLbBasfaPB7zimI.png" },
-  { name: "Duvel", style: "Belgian Golden Strong Ale", abv: "8.5%", ibu: "33", size: "330ml", price: "$42.000", image: "https://framerusercontent.com/images/SOqyMiN1rOzaBcKBuNPcVfXkNqI.png" },
-  { name: "Straffe Hendrik 9", style: "Belgian Triple", abv: "9%", ibu: "35", size: "330ml", price: "$38.000", image: "https://framerusercontent.com/images/kP1jRLfVB8Ojpmu5w0QpZd1X71U.png" },
-  { name: "Straffe Hendrik 11", style: "Belgian Quadruple", abv: "11%", ibu: "35", size: "330ml", price: "$40.000", image: "https://framerusercontent.com/images/0mUjHPVprBOIdbrpdYJQ5xV5uUY.png" },
-  { name: "Brugse Zot", style: "Blonde Ale", abv: "6%", ibu: "23", size: "330ml", price: "$36.000", image: "https://framerusercontent.com/images/E4dDobmrZnRDdTnEEkwu9Aaek.png" },
-  { name: "Brugse Zot Dubbel", style: "Belgian Triple", abv: "7.5%", ibu: "28", size: "330ml", price: "$36.000", image: "https://framerusercontent.com/images/IPneZVUluhkPtb4v60orkDHpgU.png" },
-  { name: "La Chouffe", style: "Blonde Ale", abv: "8%", ibu: "20", size: "330ml", price: "$39.000", image: "https://framerusercontent.com/images/sq3ZdhmRjJK56LYJqoUHNveKl4o.png" },
-  { name: "Chimay Blue", style: "Belgian Strong Dark Ale", abv: "9.0%", ibu: "35", size: "330ml", price: "$38.000", image: "https://framerusercontent.com/images/yBnUolXISflUZ7St0VLe71CnsC8.png" },
-  { name: "Chimay Blue 750", style: "Belgian Strong Dark Ale", abv: "9.0%", ibu: "35", size: "750ml", price: "$79.000", image: "https://framerusercontent.com/images/T6t3sIiu2IcnFFaSsDCfDuXT68.png" },
-  { name: "Chimay Triple", style: "Belgian Tripel", abv: "8.0%", ibu: "35", size: "330ml", price: "$36.000", image: "https://framerusercontent.com/images/gmGsNmqaVKMs4wWqFoMTMIkLYGQ.png" },
-  { name: "Chimay Triple 750", style: "Belgian Tripel", abv: "8.0%", ibu: "35", size: "750ml", price: "$76.000", image: "https://framerusercontent.com/images/Sn4YIvIx4AQYR3ePqK8w6cUL2Q.png" },
-  { name: "Chimay Brown", style: "Belgian Dubbel", abv: "7.0%", ibu: "22", size: "330ml", price: "$36.000", image: "https://framerusercontent.com/images/D6pEMGu6oTqt6YqdDoqVBuOek.png" },
-  { name: "Chimay Brown 750", style: "Belgian Dubbel", abv: "7.0%", ibu: "22", size: "750ml", price: "$76.000", image: "https://framerusercontent.com/images/AyIyyuDOdxodBOV0gN8gF8GrA.png" },
+  { name: "Delirium Tremens", style: "Belgian Golden Strong Ale", abv: "8.5%", ibu: "24.5", size: "330ml", price: "$35.000", image: "https://framerusercontent.com/images/eo25TEknojTk1Nas0UuCKzRbcg.png", notes: N.deliriumTremens },
+  { name: "Delirium Tremens 750", style: "Belgian Golden Strong Ale", abv: "8.5%", ibu: "24.5", size: "750ml", price: "$75.000", image: "https://framerusercontent.com/images/qqADbNkCddDAMHEhgmAAk4puslc.png", notes: N.deliriumTremens },
+  { name: "Delirium Nocturnum", style: "Belgian Dark Strong Ale", abv: "8.5%", ibu: "24", size: "330ml", price: "$35.000", image: "https://framerusercontent.com/images/ANIuSVZGfG8s79TT1sf1nYA3NKw.png", notes: N.deliriumNocturnum },
+  { name: "Delirium Nocturnum 750", style: "Belgian Dark Strong Ale", abv: "8.5%", ibu: "24", size: "750ml", price: "$75.000", image: "https://framerusercontent.com/images/jhZIUatHPkxKqYUBLzjyDakXvIw.png", notes: N.deliriumNocturnum },
+  { name: "Delirium Christmas", style: "Winter Ale", abv: "10%", ibu: "26", size: "330ml", price: "$37.000", image: "https://framerusercontent.com/images/UAoo8VQDX99LGZum7k0VOQNEx8w.png", notes: N.deliriumChristmas },
+  { name: "Delirium Christmas 750", style: "Winter Ale", abv: "10%", ibu: "26", size: "750ml", price: "$77.000", image: "https://framerusercontent.com/images/CiYyB9D0RNySOnEcUUySOvZnThs.png", notes: N.deliriumChristmas },
+  { name: "Delirium Argentum", style: "Belgian IPA", abv: "7%", ibu: "48", size: "330ml", price: "$35.000", image: "https://framerusercontent.com/images/LewasCWKZuwFsMm0uaytecgPfU.png", notes: N.deliriumArgentum },
+  { name: "Delirium Red", style: "Strong Fruit Beer", abv: "8%", ibu: "20", size: "330ml", price: "$35.000", image: "https://framerusercontent.com/images/nhLKMTN1ulMvjuW36TwoaY8Nz1s.png", notes: N.deliriumRed },
+  { name: "Delirium Red 750", style: "Strong Fruit Beer", abv: "8%", ibu: "20", size: "750ml", price: "$75.000", image: "https://framerusercontent.com/images/CB2ZoMX3lNPg1dYGp2Ugkvu3I08.png", notes: N.deliriumRed },
+  { name: "Gulden Draak 9000", style: "Quadruple", abv: "10.5%", ibu: "25", size: "330ml", price: "$35.000", image: "https://framerusercontent.com/images/w6hq0XedV0MMFWY6CjolEpp53E.png", notes: N.guldenDraak9000 },
+  { name: "Gulden Draak 9000 750", style: "Quadruple", abv: "10.5%", ibu: "25", size: "750ml", price: "$75.000", image: "https://framerusercontent.com/images/mZTV1mSE0ftWy60DGwNHQZwWgg.png", notes: N.guldenDraak9000 },
+  { name: "Gulden Draak Classic", style: "Dark Strong Ale", abv: "10.5%", ibu: "30", size: "330ml", price: "$35.000", image: "https://framerusercontent.com/images/92oOJsepQV3FlJSE0Ru8XigZHA.png", notes: N.guldenDraakClassic },
+  { name: "Gulden Draak Classic 750", style: "Dark Strong Ale", abv: "10.5%", ibu: "30", size: "750ml", price: "$75.000", image: "https://framerusercontent.com/images/wWVKsyplup5hwbgx3SjjaIHL1C0.png", notes: N.guldenDraakClassic },
+  { name: "Abbaye Premier Cru", style: "Blonde Strong Ale", abv: "9%", ibu: "22", size: "330ml", price: "$29.000", image: "https://framerusercontent.com/images/m6gPyQxF1FaLWPWNgJ53XCSwI.png", notes: N.abbayePremierCru },
+  { name: "Abbaye Brune", style: "Belgian Dubbel", abv: "6%", ibu: "20", size: "330ml", price: "$29.000", image: "https://framerusercontent.com/images/gIbidMnrUa8PniANfcjZqltKQl0.png", notes: N.abbayeBrune },
+  { name: "Abbaye Brune 750", style: "Belgian Dubbel", abv: "6%", ibu: "20", size: "750ml", price: "$69.000", image: "https://framerusercontent.com/images/vYJildLxBXIb1NaDzrLGmR8gG4c.png", notes: N.abbayeBrune },
+  { name: "Floris Framboise", style: "Fruit Beer", abv: "3.6%", ibu: "7", size: "330ml", price: "$32.000", image: "https://framerusercontent.com/images/eTIWpHQXw1nvaMaOGdT1ZFtKk.png", notes: N.florisFramboise },
+  { name: "Floris Passion", style: "Fruit Beer", abv: "3.6%", ibu: "12", size: "330ml", price: "$32.000", image: "https://framerusercontent.com/images/qracfmDVegCRVrxlFp2Sqrx4Dk.png", notes: N.florisPassion },
+  { name: "St Idesbald", style: "Blonde Ale", abv: "6.5%", ibu: "24.5", size: "330ml", price: "$26.000", image: "https://framerusercontent.com/images/z8UTnmWbztKAjLbBasfaPB7zimI.png", notes: N.stIdesbald },
+  { name: "Duvel", style: "Belgian Golden Strong Ale", abv: "8.5%", ibu: "33", size: "330ml", price: "$42.000", image: "https://framerusercontent.com/images/SOqyMiN1rOzaBcKBuNPcVfXkNqI.png", notes: N.duvel },
+  { name: "Straffe Hendrik 9", style: "Belgian Triple", abv: "9%", ibu: "35", size: "330ml", price: "$38.000", image: "https://framerusercontent.com/images/kP1jRLfVB8Ojpmu5w0QpZd1X71U.png", notes: N.straffeHendrik9 },
+  { name: "Straffe Hendrik 11", style: "Belgian Quadruple", abv: "11%", ibu: "35", size: "330ml", price: "$40.000", image: "https://framerusercontent.com/images/0mUjHPVprBOIdbrpdYJQ5xV5uUY.png", notes: N.straffeHendrik11 },
+  { name: "Brugse Zot", style: "Blonde Ale", abv: "6%", ibu: "23", size: "330ml", price: "$36.000", image: "https://framerusercontent.com/images/E4dDobmrZnRDdTnEEkwu9Aaek.png", notes: N.brugseZot },
+  { name: "Brugse Zot Dubbel", style: "Belgian Triple", abv: "7.5%", ibu: "28", size: "330ml", price: "$36.000", image: "https://framerusercontent.com/images/IPneZVUluhkPtb4v60orkDHpgU.png", notes: N.brugseZotDubbel },
+  { name: "La Chouffe", style: "Blonde Ale", abv: "8%", ibu: "20", size: "330ml", price: "$39.000", image: "https://framerusercontent.com/images/sq3ZdhmRjJK56LYJqoUHNveKl4o.png", notes: N.laChouffe },
+  { name: "Chimay Blue", style: "Belgian Strong Dark Ale", abv: "9.0%", ibu: "35", size: "330ml", price: "$38.000", image: "https://framerusercontent.com/images/yBnUolXISflUZ7St0VLe71CnsC8.png", notes: N.chimayBlue },
+  { name: "Chimay Blue 750", style: "Belgian Strong Dark Ale", abv: "9.0%", ibu: "35", size: "750ml", price: "$79.000", image: "https://framerusercontent.com/images/T6t3sIiu2IcnFFaSsDCfDuXT68.png", notes: N.chimayBlue },
+  { name: "Chimay Triple", style: "Belgian Tripel", abv: "8.0%", ibu: "35", size: "330ml", price: "$36.000", image: "https://framerusercontent.com/images/gmGsNmqaVKMs4wWqFoMTMIkLYGQ.png", notes: N.chimayTriple },
+  { name: "Chimay Triple 750", style: "Belgian Tripel", abv: "8.0%", ibu: "35", size: "750ml", price: "$76.000", image: "https://framerusercontent.com/images/Sn4YIvIx4AQYR3ePqK8w6cUL2Q.png", notes: N.chimayTriple },
+  { name: "Chimay Brown", style: "Belgian Dubbel", abv: "7.0%", ibu: "22", size: "330ml", price: "$36.000", image: "https://framerusercontent.com/images/D6pEMGu6oTqt6YqdDoqVBuOek.png", notes: N.chimayBrown },
+  { name: "Chimay Brown 750", style: "Belgian Dubbel", abv: "7.0%", ibu: "22", size: "750ml", price: "$76.000", image: "https://framerusercontent.com/images/AyIyyuDOdxodBOV0gN8gF8GrA.png", notes: N.chimayBrown },
 ];
 
 export const CERVEZAS_ALEMANIA: BeerItem[] = [
-  { name: "Schofferhofer", style: "Hefe Weizen", abv: "5%", ibu: "14", size: "330ml", price: "$20.000", image: "https://framerusercontent.com/images/cH6iE37CJOAQDkZL9842f8B3hFU.png" },
-  { name: "Schofferhofer", style: "Hefe Weizen", abv: "5%", ibu: "14", size: "500ml", price: "$28.000", image: "https://framerusercontent.com/images/Fmv14sJwsknzEeLKR7jlMi5OQM.png" },
-  { name: "Schofferhofer Dunkel", style: "Dunkel", abv: "5%", ibu: "11", size: "500ml", price: "$28.000", image: "https://framerusercontent.com/images/a9VfjNyonzJCGc1rEvIvlcuO0.png" },
-  { name: "Schofferhofer Grapefruit", style: "Fruit Beer", abv: "2.5%", ibu: "13", size: "330ml", price: "$18.000", image: "https://framerusercontent.com/images/u9YJQJhJXhSUxJETvjVVcyPBOg.png" },
-  { name: "Erdinger Weissbier", style: "Hefe Weizen", abv: "5.4%", ibu: "13", size: "500ml", price: "$37.000", image: "https://framerusercontent.com/images/P0Ghb5CAB0SKc3A5PHfH3MF8mBE.png" },
-  { name: "Erdinger Pikantus", style: "Weizenbock", abv: "7.3%", ibu: "10", size: "500ml", price: "$38.000", image: "https://framerusercontent.com/images/3xwk7eBhgJLXJySazHPaCI4nlc.png" },
-  { name: "Clausthaler", style: "Lager (Sin alcohol)", abv: "0.4%", ibu: "32", size: "330ml", price: "$19.000", image: "https://framerusercontent.com/images/3k4t5GuGKvl7ZRC3KSD2MZy0.png" },
-  { name: "DAB", style: "Dortmunder", abv: "5%", ibu: "23", size: "330ml", price: "$18.000", image: "https://framerusercontent.com/images/Pqq3yXq6ODbJzTuvYl7uljJostQ.png" },
+  { name: "Schofferhofer", style: "Hefe Weizen", abv: "5%", ibu: "14", size: "330ml", price: "$20.000", image: "https://framerusercontent.com/images/cH6iE37CJOAQDkZL9842f8B3hFU.png", notes: N.schofferhofer },
+  { name: "Schofferhofer", style: "Hefe Weizen", abv: "5%", ibu: "14", size: "500ml", price: "$28.000", image: "https://framerusercontent.com/images/Fmv14sJwsknzEeLKR7jlMi5OQM.png", notes: N.schofferhofer },
+  { name: "Schofferhofer Dunkel", style: "Dunkel", abv: "5%", ibu: "11", size: "500ml", price: "$28.000", image: "https://framerusercontent.com/images/a9VfjNyonzJCGc1rEvIvlcuO0.png", notes: N.schofferhoferDunkel },
+  { name: "Schofferhofer Grapefruit", style: "Fruit Beer", abv: "2.5%", ibu: "13", size: "330ml", price: "$18.000", image: "https://framerusercontent.com/images/u9YJQJhJXhSUxJETvjVVcyPBOg.png", notes: N.schofferhoferGrapefruit },
+  { name: "Erdinger Weissbier", style: "Hefe Weizen", abv: "5.4%", ibu: "13", size: "500ml", price: "$37.000", image: "https://framerusercontent.com/images/P0Ghb5CAB0SKc3A5PHfH3MF8mBE.png", notes: N.erdingerWeissbier },
+  { name: "Erdinger Pikantus", style: "Weizenbock", abv: "7.3%", ibu: "10", size: "500ml", price: "$38.000", image: "https://framerusercontent.com/images/3xwk7eBhgJLXJySazHPaCI4nlc.png", notes: N.erdingerPikantus },
+  { name: "Clausthaler", style: "Lager (Sin alcohol)", abv: "0.4%", ibu: "32", size: "330ml", price: "$19.000", image: "https://framerusercontent.com/images/3k4t5GuGKvl7ZRC3KSD2MZy0.png", notes: N.clausthaler },
+  { name: "DAB", style: "Dortmunder", abv: "5%", ibu: "23", size: "330ml", price: "$18.000", image: "https://framerusercontent.com/images/Pqq3yXq6ODbJzTuvYl7uljJostQ.png", notes: N.dab },
 ];
 
-export const CERVEZAS_OTROS: BeerItem[] = [
-  { name: "Adnams Innovation IPA", style: "English IPA", abv: "6.7%", ibu: "45", size: "330ml", price: "$26.000", image: "https://framerusercontent.com/images/yKQLEHjrzMWJC7519Vi0h8JXx4.png" },
-  { name: "Adnams Ghost Ship", style: "Pale Ale", abv: "4.6%", ibu: "40", size: "500ml", price: "$28.000", image: "https://framerusercontent.com/images/ZUTrsJbUjqcilKOIMYll12FQ06s.png" },
-  { name: "Adnams Kobold", style: "English Lager", abv: "4.8%", ibu: "44", size: "500ml", price: "$28.000", image: "https://framerusercontent.com/images/mGPh2d5lTS2MJywbfTo5aiXIA.png" },
-  { name: "Adnams Stout", style: "Stout", abv: "4.4%", ibu: "31", size: "500ml", price: "$28.000", image: "https://framerusercontent.com/images/HOTjYtu7Zp9wwohan3ZDbzIEto.png" },
-  { name: "Prazacka Svetla Desitka", style: "Czech Pale Lager", abv: "4.0%", ibu: "22", size: "500ml", price: "$26.000", image: "https://framerusercontent.com/images/qGr3OYdqSXCAWQRXmhrcTSiJbU.png" },
-  { name: "Innis & Gunn Original", style: "Scottish Ale", abv: "6.6%", ibu: "18", size: "330ml", price: "$35.000", image: "https://framerusercontent.com/images/h7QDceM5b1aYndBu3UbhVRkLA.png" },
+export const CERVEZAS_UK: BeerItem[] = [
+  { name: "Adnams Innovation IPA", style: "English IPA", abv: "6.7%", ibu: "45", size: "330ml", price: "$26.000", image: "https://framerusercontent.com/images/yKQLEHjrzMWJC7519Vi0h8JXx4.png", notes: N.adnamsInnovationIpa },
+  { name: "Adnams Ghost Ship", style: "Pale Ale", abv: "4.6%", ibu: "40", size: "500ml", price: "$28.000", image: "https://framerusercontent.com/images/ZUTrsJbUjqcilKOIMYll12FQ06s.png", notes: N.adnamsGhostShip },
+  { name: "Adnams Kobold", style: "English Lager", abv: "4.8%", ibu: "44", size: "500ml", price: "$28.000", image: "https://framerusercontent.com/images/mGPh2d5lTS2MJywbfTo5aiXIA.png", notes: N.adnamsKobold },
+  { name: "Adnams Stout", style: "Stout", abv: "4.4%", ibu: "31", size: "500ml", price: "$28.000", image: "https://framerusercontent.com/images/HOTjYtu7Zp9wwohan3ZDbzIEto.png", notes: N.adnamsStout },
 ];
+
+export const CERVEZAS_CHECA: BeerItem[] = [
+  { name: "Prazacka Svetla Desitka", style: "Czech Pale Lager", abv: "4.0%", ibu: "22", size: "500ml", price: "$26.000", image: "https://framerusercontent.com/images/qGr3OYdqSXCAWQRXmhrcTSiJbU.png", notes: N.prazackaSvetla },
+];
+
+export const CERVEZAS_ESCOCIA: BeerItem[] = [
+  { name: "Innis & Gunn Original", style: "Scottish Ale", abv: "6.6%", ibu: "18", size: "330ml", price: "$35.000", image: "https://framerusercontent.com/images/h7QDceM5b1aYndBu3UbhVRkLA.png", notes: N.innisGunn },
+];
+
 
 export const COMIDA_ENTRADAS: FoodItem[] = [
   { name: "Patatas Bravas", description: "Papas fritas en casco, bañadas con salsa brava de la casa.", price: "$20.000", image: "https://framerusercontent.com/images/aebiBoMWF0Vcdq5lsAHEzxQTcc.webp" },
@@ -230,7 +536,7 @@ export const NOSOTROS_GALLERY = [
 
 export const CATEGORIES = [
   { num: "01", label: "Draft", to: "/draft", caption: "Cervezas de barril" },
-  { num: "02", label: "Cervezas", to: "/cervezas", caption: "Bélgica · Alemania · Otros" },
+  { num: "02", label: "Cervezas", to: "/cervezas", caption: "Bélgica · Alemania · UK · Checa · Escocia" },
   { num: "03", label: "Comida", to: "/comida", caption: "Para acompañar" },
   { num: "04", label: "Bebidas", to: "/bebidas", caption: "Cocktails & mocktails" },
   { num: "05", label: "Licores", to: "/licores", caption: "Selección exclusiva" },

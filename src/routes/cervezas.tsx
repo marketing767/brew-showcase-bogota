@@ -8,8 +8,11 @@ import { Marquee } from "@/components/menu/Marquee";
 import {
   CERVEZAS_BELGICA,
   CERVEZAS_ALEMANIA,
-  CERVEZAS_OTROS,
+  CERVEZAS_UK,
+  CERVEZAS_CHECA,
+  CERVEZAS_ESCOCIA,
   HERO_IMAGES,
+  type BeerItem,
 } from "@/lib/menu-data";
 
 export const Route = createFileRoute("/cervezas")({
@@ -19,12 +22,12 @@ export const Route = createFileRoute("/cervezas")({
       {
         name: "description",
         content:
-          "Más de 30 referencias de cerveza importada: Bélgica, Alemania y otros orígenes. Estilo, ABV, IBU y tamaño.",
+          "Más de 30 referencias de cerveza importada: Bélgica, Alemania, Reino Unido, República Checa y Escocia. Estilo, ABV, IBU, notas de cata.",
       },
       { property: "og:title", content: "Cervezas — Beer Lovers Bogotá" },
       {
         property: "og:description",
-        content: "Belgas, alemanas y más. Estilo, ABV, IBU y precios en COP.",
+        content: "Belgas, alemanas, británicas, checas y escocesas. Con notas de cata.",
       },
     ],
   }),
@@ -34,7 +37,9 @@ export const Route = createFileRoute("/cervezas")({
 const TABS = [
   { id: "belgica", label: "Bélgica" },
   { id: "alemania", label: "Alemania" },
-  { id: "otros", label: "Otros" },
+  { id: "uk", label: "Reino Unido" },
+  { id: "checa", label: "Rep. Checa" },
+  { id: "escocia", label: "Escocia" },
 ];
 
 function Cervezas() {
@@ -70,11 +75,27 @@ function Cervezas() {
       />
 
       <CountrySection
-        id="otros"
-        eyebrow="Del mundo"
-        title="Otros"
-        blurb="Reino Unido, República Checa, Escocia. Estilos clásicos y modernos."
-        items={CERVEZAS_OTROS}
+        id="uk"
+        eyebrow="Herencia británica"
+        title="Reino Unido"
+        blurb="Ales, IPAs y stouts de Southwold, con la tradición inglesa de Adnams."
+        items={CERVEZAS_UK}
+      />
+
+      <CountrySection
+        id="checa"
+        eyebrow="Escuela pilsner"
+        title="República Checa"
+        blurb="Lagers claras y refrescantes, cuna del estilo pilsner."
+        items={CERVEZAS_CHECA}
+      />
+
+      <CountrySection
+        id="escocia"
+        eyebrow="Roble escocés"
+        title="Escocia"
+        blurb="Scottish Ales maltosas, maduradas sobre astillas de roble."
+        items={CERVEZAS_ESCOCIA}
       />
 
       <Disclaimer />
@@ -93,7 +114,7 @@ function CountrySection({
   eyebrow: string;
   title: string;
   blurb: string;
-  items: typeof CERVEZAS_BELGICA;
+  items: BeerItem[];
 }) {
   return (
     <section id={id} className="scroll-mt-32">
@@ -106,7 +127,7 @@ function CountrySection({
           {blurb}
         </p>
       </header>
-      <div className="px-5 space-y-12 pb-6">
+      <div className="px-5 space-y-4 pb-6">
         {items.map((item, i) => (
           <BeerCard key={item.name + item.size} item={item} index={i} />
         ))}
