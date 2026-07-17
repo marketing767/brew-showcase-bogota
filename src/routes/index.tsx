@@ -3,6 +3,7 @@ import { Marquee } from "@/components/menu/Marquee";
 import { MoodMatch } from "@/components/menu/MoodMatch";
 import { CATEGORIES, HERO_IMAGES } from "@/lib/menu-data";
 import logo from "@/assets/beer-lovers-logo.png.asset.json";
+import slogan from "@/assets/beer-lovers-slogan-v2.png";
 
 
 export const Route = createFileRoute("/")({
@@ -107,9 +108,9 @@ function Home() {
         {/* FOOTER */}
         <footer className="px-5 py-10 mt-auto">
           <img
-            src={logo.url}
-            alt="Beer Lovers Bogotá"
-            className="h-24 w-auto object-contain mb-4 -ml-2"
+            src={slogan}
+            alt="¡La amamos, la tomamos!"
+            className="w-full max-w-[140px] h-auto object-contain mb-6"
           />
           <p className="text-xs text-muted-foreground leading-relaxed">
             Parque de la 93 · Bogotá, Colombia
@@ -117,6 +118,9 @@ function Home() {
 
           <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground/60 mt-6">
             Disfruta con responsabilidad
+          </p>
+          <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground/60 mt-1">
+            El exceso de alcohol es perjudicial para la salud
           </p>
         </footer>
       </div>
