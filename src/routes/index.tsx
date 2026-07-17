@@ -106,7 +106,7 @@ function Home() {
         </section>
 
         {/* FOOTER */}
-        <footer className="px-5 py-10 mt-auto">
+        <footer className="px-5 py-10 mt-auto flex flex-col items-center text-center">
           <img
             src={slogan}
             alt="¡La amamos, la tomamos!"
