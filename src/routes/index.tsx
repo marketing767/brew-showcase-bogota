@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Marquee } from "@/components/menu/Marquee";
 import { MoodMatch } from "@/components/menu/MoodMatch";
 import { CATEGORIES, HERO_IMAGES } from "@/lib/menu-data";
-import logo from "@/assets/beer-lovers-logo.png.asset.json";
+import logo from "@/assets/logo-beer-lovers-dos-lineas.png";
 import slogan from "@/assets/beer-lovers-slogan-v2.png";
 
 
@@ -108,10 +108,10 @@ function Home() {
         {/* FOOTER */}
         <footer className="px-5 py-10 mt-auto flex flex-col items-center text-center">
           <img
-            src={slogan}
-            alt="¡La amamos, la tomamos!"
-            className="w-full max-w-[140px] h-auto object-contain mb-6"
-          />
+  src={logo}
+  alt="Beer Lovers Bogotá"
+  className="h-8 w-auto object-contain"
+/>
           <p className="text-xs text-muted-foreground leading-relaxed">
             Parque de la 93 · Bogotá, Colombia
           </p>
