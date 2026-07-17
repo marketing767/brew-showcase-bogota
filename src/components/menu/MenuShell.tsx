@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { TopBar } from "./TopBar";
 import { BottomNav } from "./BottomNav";
-import slogan from "@/assets/beer-lovers-slogan.png.";
+import slogan from "@/assets/beer-lovers-slogan-v2.png";
 
 export function MenuShell({
   children,
