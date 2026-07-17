@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { MenuShell } from "@/components/menu/MenuShell";
 import { PhotoMarquee } from "@/components/menu/PhotoMarquee";
+import { SocialLinks } from "@/components/menu/SocialLinks";
 import { NOSOTROS_GALLERY } from "@/lib/menu-data";
 
 export const Route = createFileRoute("/nosotros")({
