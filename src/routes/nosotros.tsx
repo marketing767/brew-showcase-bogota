@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { MenuShell } from "@/components/menu/MenuShell";
-import { Marquee } from "@/components/menu/Marquee";
+import { PhotoMarquee } from "@/components/menu/PhotoMarquee";
 import { NOSOTROS_GALLERY } from "@/lib/menu-data";
 
 export const Route = createFileRoute("/nosotros")({
@@ -40,30 +40,14 @@ function Nosotros() {
         </p>
       </header>
 
-      <Marquee />
-
-      <section className="px-5 pt-10 pb-6">
-        <p className="font-serif italic text-gold text-sm mb-1">Galería</p>
-        <h2 className="text-3xl font-extrabold tracking-tighter uppercase leading-none mb-6">
-          La casa
-        </h2>
-        <div className="grid grid-cols-2 gap-2">
-          {NOSOTROS_GALLERY.map((src, i) => (
-            <div
-              key={src}
-              className={`overflow-hidden border border-border bg-stone-100 ${
-                i % 5 === 0 ? "col-span-2 aspect-[2/1]" : "aspect-square"
-              }`}
-            >
-              <img
-                src={src}
-                alt={`Beer Lovers ${i + 1}`}
-                loading="lazy"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-              />
-            </div>
-          ))}
+      <section className="pt-10 pb-6">
+        <div className="px-5">
+          <p className="font-serif italic text-gold text-sm mb-1">Galería</p>
+          <h2 className="text-3xl font-extrabold tracking-tighter uppercase leading-none mb-6">
+            La casa
+          </h2>
         </div>
+        <PhotoMarquee images={NOSOTROS_GALLERY} />
       </section>
 
       <section className="px-5 pt-12 pb-6 border-t border-border mt-8">
