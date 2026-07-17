@@ -119,7 +119,7 @@ function Home() {
           <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground/60 mt-6">
             Disfruta con responsabilidad
           </p>
-          <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground/60 mt-1">
+          <p className="text-[9px] font-mono uppercase tracking-tight text-muted-foreground/60 mt-1 whitespace-nowrap">
             El exceso de alcohol es perjudicial para la salud
           </p>
         </footer>
