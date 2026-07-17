@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { MenuShell } from "@/components/menu/MenuShell";
 import { PhotoMarquee } from "@/components/menu/PhotoMarquee";
 import { SocialLinks } from "@/components/menu/SocialLinks";
-import { NOSOTROS_GALLERY } from "@/lib/menu-data";
+import { NOSOTROS_GALLERY, OPENING_HOURS, MAPS_URL } from "@/lib/menu-data";
 
 export const Route = createFileRoute("/nosotros")({
   head: () => ({
@@ -41,6 +41,37 @@ function Nosotros() {
         </p>
       </header>
 
+      {/* HORARIOS */}
+      <section className="px-5 pb-8">
+        <p className="font-serif italic text-gold text-sm mb-1">Horarios</p>
+        <h2 className="text-3xl font-extrabold tracking-tighter uppercase leading-none mb-6">
+          Horarios de apertura
+        </h2>
+        <dl className="text-sm">
+          {OPENING_HOURS.map(({ day, hours }) => (
+            <div
+              key={day}
+              className="flex items-baseline justify-between gap-3 border-t border-border py-3 first:border-t-0"
+            >
+              <dt className="font-bold">{day}</dt>
+              <dd
+                className={`font-mono text-xs ${
+                  hours === "Sin servicio"
+                    ? "text-muted-foreground"
+                    : "text-ink"
+                }`}
+              >
+                {hours}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      {/* REDES Y UBICACIÓN RÁPIDA */}
+      <SocialLinks />
+
+      {/* GALERÍA */}
       <section className="pt-10 pb-6">
         <div className="px-5">
           <p className="font-serif italic text-gold text-sm mb-1">Galería</p>
@@ -51,31 +82,14 @@ function Nosotros() {
         <PhotoMarquee images={NOSOTROS_GALLERY} />
       </section>
 
-      <section className="px-5 pt-12 pb-6 border-t border-border mt-8">
+      {/* UBICACIÓN DETALLADA */}
+      <section className="px-5 pt-12 pb-10 border-t border-border mt-8">
         <p className="font-serif italic text-gold text-sm mb-1">Visítanos</p>
         <h2 className="text-3xl font-extrabold tracking-tighter uppercase leading-none mb-6">
           Encuéntranos
         </h2>
-        <dl className="space-y-5">
+        <dl className="space-y-5 mb-8">
           <Detail label="Dirección" value="Parque de la 93 · Bogotá, Colombia" />
           <Detail label="Especialidad" value="Cervezas importadas · 30+ referencias" />
           <Detail label="Cocina" value="Burgers, tapas, tacos, picadas" />
-          <Detail label="Bar" value="Cocktails de autor & licores premium" />
-        </dl>
-      </section>
-    </MenuShell>
-  );
-}
-
-function Detail({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="border-t border-border pt-3">
-      <dt className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground mb-1">
-        {label}
-      </dt>
-      <dd className="text-base font-bold uppercase tracking-tight text-balance">
-        {value}
-      </dd>
-    </div>
-  );
-}
+          <Detail
