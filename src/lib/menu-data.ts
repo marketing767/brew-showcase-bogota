@@ -409,11 +409,11 @@ export const CERVEZAS_ESCOCIA: BeerItem[] = [
 
 
 export const COMIDA_ENTRADAS: FoodItem[] = [
-  { name: "Patatas Bravas", description: "Papas fritas en casco, bañadas con salsa brava de la casa.", price: "$20.000", image: "https://framerusercontent.com/images/aebiBoMWF0Vcdq5lsAHEzxQTcc.webp", spicy: true },
-  { name: "Chicharroncitos", description: "Trocitos de chicharrón carnudo crocante acompañados con guacamole de la casa.", price: "$38.000", image: "https://framerusercontent.com/images/DCreA7X4KCJMjmue8RAlGG4JW0.webp" },
-  { name: "Tentáculos de Mazorca", description: "Mazorca dulce en forma de tentáculos, con salsa agria de la casa.", price: "$31.000", image: "https://framerusercontent.com/images/xYiLYpOIhpPyiqwMAtp67vBgQGA.webp" },
-  { name: "Buñuelitos de Queso", description: "Buñuelitos de queso costeño apanados, acompañados con salsa BBQ dulce.", price: "$28.000", image: "https://framerusercontent.com/images/mhFF8DjYA1pGCHTn1OcTQVTGQ.webp" },
-  { name: "Belgium Frites", description: "Papas fritas con receta Belga, acompañadas con mayonesa de la casa.", price: "$15.000", image: "https://framerusercontent.com/images/KQMApKoh27XcEMtW6X4ZiQOT5EU.webp" },
+  { name: "Patatas Bravas", description: "Papas fritas en casco, bañadas con salsa brava de la casa.", price: "$20.000", image: "https://framerusercontent.com/images/aebiBoMWF0Vcdq5lsAHEzxQTcc.webp", spicy: true, pairing: ["Prazacka Svetla Desitka", "Schofferhofer"] },
+  { name: "Chicharroncitos", description: "Trocitos de chicharrón carnudo crocante acompañados con guacamole de la casa.", price: "$38.000", image: "https://framerusercontent.com/images/DCreA7X4KCJMjmue8RAlGG4JW0.webp", pairing: ["Duvel", "La Chouffe"] },
+  { name: "Tentáculos de Mazorca", description: "Mazorca dulce en forma de tentáculos, con salsa agria de la casa.", price: "$31.000", image: "https://framerusercontent.com/images/xYiLYpOIhpPyiqwMAtp67vBgQGA.webp", pairing: ["Floris Passion", "Schofferhofer Grapefruit"] },
+  { name: "Buñuelitos de Queso", description: "Buñuelitos de queso costeño apanados, acompañados con salsa BBQ dulce.", price: "$28.000", image: "https://framerusercontent.com/images/mhFF8DjYA1pGCHTn1OcTQVTGQ.webp", pairing: ["Erdinger Weissbier", "Abbaye Premier Cru"] },
+  { name: "Belgium Frites", description: "Papas fritas con receta Belga, acompañadas con mayonesa de la casa.", price: "$15.000", image: "https://framerusercontent.com/images/KQMApKoh27XcEMtW6X4ZiQOT5EU.webp", pairing: ["Duvel", "Adnams Ghost Ship"] },
 ];
 
 export const COMIDA_FUERTES: FoodItem[] = [
