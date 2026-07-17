@@ -30,7 +30,12 @@ function Home() {
     <div className="min-h-screen bg-paper text-ink">
       <div className="max-w-[430px] mx-auto border-x border-border min-h-screen flex flex-col">
         {/* HEADER */}
-        <nav className="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b border-border px-5 py-3 flex justify-end items-center">
+        <nav className="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b border-border px-5 py-3 flex justify-between items-center">
+          <img
+            src={logo}
+            alt="Beer Lovers Bogotá"
+            className="h-8 w-auto object-contain"
+          />
           <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground">
             Pq. 93 · Bogotá
           </div>
