@@ -19,7 +19,7 @@ export function MenuShell({
           <img
             src={slogan}
             alt="¡La amamos, la tomamos!"
-            className="w-full max-w-[280px] h-auto object-contain"
+            className="w-full max-w-[180px] h-auto object-contain"
           />
         </div>
         <div className="h-28" />
