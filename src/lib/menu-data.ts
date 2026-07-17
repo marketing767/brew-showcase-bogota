@@ -45,9 +45,9 @@ export const HERO_IMAGES = {
 };
 
 export const BRAND_MARQUEE = [
-  "CHIMAY", "DUVEL", "SCHÖFFERHOFER", "BREWDOG", "ERDINGER",
+  "CHIMAY", "DUVEL", "SCHÖFFERHOFER", "ERDINGER",
   "DELIRIUM", "GULDEN DRAAK", "LA CHOUFFE", "ADNAMS", "STRAFFE HENDRIK",
-  "BRUGSE ZOT", "FLORIS", "ABBAYE", "WEIHENSTEPHAN", "INNIS & GUNN",
+  "BRUGSE ZOT", "FLORIS", "ABBAYE", "INNIS & GUNN", "DAB", "ST IDESBALD",
 ];
 
 // Notas de cata basadas en los perfiles publicados por cada cervecería.
