@@ -39,9 +39,19 @@ export function FoodCard({ item, index }: { item: FoodItem; index: number }) {
         <p className="text-sm text-muted-foreground leading-relaxed text-pretty mb-3">
           {item.description}
         </p>
-        <span className="text-lg font-extrabold tracking-tight text-ink block">
+        <span className="text-lg font-extrabold tracking-tight text-ink block mb-3">
           {item.price}
         </span>
+        {item.pairing && item.pairing.length > 0 && (
+          <div className="pt-3 border-t border-border/60">
+            <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-gold mb-1.5">
+              Maridaje sugerido
+            </p>
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              {item.pairing.join(" · ")}
+            </p>
+          </div>
+        )}
       </div>
     </article>
   );
