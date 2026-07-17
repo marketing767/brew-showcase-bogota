@@ -28,6 +28,7 @@ export type FoodItem = {
   price: string;
   image: string;
   spicy?: boolean;
+  pairing?: string[];
 };
 
 export type SimpleItem = {
