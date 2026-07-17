@@ -113,14 +113,13 @@ function Home() {
         {/* FOOTER */}
         <footer className="px-5 py-10 mt-auto flex flex-col items-center text-center">
           <img
-  src={logo}
-  alt="Beer Lovers Bogotá"
-  className="h-8 w-auto object-contain"
-/>
+            src={slogan}
+            alt="¡La amamos, la tomamos!"
+            className="w-full max-w-[140px] h-auto object-contain mb-6"
+          />
           <p className="text-xs text-muted-foreground leading-relaxed">
             Parque de la 93 · Bogotá, Colombia
           </p>
-
           <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground/60 mt-6">
             Disfruta con responsabilidad
           </p>
