@@ -15,13 +15,13 @@ export function MenuShell({
       <div className="max-w-[430px] mx-auto border-x border-border min-h-screen relative">
         <TopBar />
         {children}
-        <div className="px-5 py-10 flex justify-center">
-          <img
-            src={slogan}
-            alt="¡La amamos, la tomamos!"
-            className="w-full max-w-[180px] h-auto object-contain"
-          />
-        </div>
+        <div className="px-5 py-4 flex justify-center">
+  <img
+    src={slogan}
+    alt="¡La amamos, la tomamos!"
+    className="w-full max-w-[140px] h-auto object-contain"
+  />
+</div>
         <div className="h-28" />
         {showBottomNav && <BottomNav />}
       </div>
