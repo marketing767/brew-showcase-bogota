@@ -636,3 +636,8 @@ export const OPENING_HOURS = [
    ];
 
    export const MAPS_URL = "https://maps.app.goo.gl/3FDKZa3Zsdco8rV1A";
+export const SOCIAL_LINKS = {
+  instagram: "https://www.instagram.com/beerloversbogota?igsh=MWkzODBlODhzeHBneQ==",
+  whatsapp: "https://wa.me/573173324529",
+  maps: "https://maps.app.goo.gl/3FDKZa3Zsdco8rV1A",
+};
