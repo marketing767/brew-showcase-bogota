@@ -65,6 +65,14 @@ function Home() {
         <MoodMatch />
 
         {/* CATEGORY GRID */}
+        <header className="px-5 pt-10 pb-6 border-t border-border">
+          <p className="font-serif italic text-base text-gold mb-1">
+            Explora la casa
+          </p>
+          <h2 className="text-3xl font-extrabold tracking-tighter uppercase leading-[0.9]">
+            Todo el menú
+          </h2>
+        </header>
         <section className="grid grid-cols-2 border-b border-border">
           {CATEGORIES.map((cat, i) => {
             const isAccent = i === 1; // Cervezas highlighted
