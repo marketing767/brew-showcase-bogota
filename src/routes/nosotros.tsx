@@ -92,4 +92,26 @@ function Nosotros() {
           <Detail label="Dirección" value="Parque de la 93 · Bogotá, Colombia" />
           <Detail label="Especialidad" value="Cervezas importadas · 30+ referencias" />
           <Detail label="Cocina" value="Burgers, tapas, tacos, picadas" />
-          <Detail
+          <Detail label="Ambiente" value="Casa cervecera · Parque de la 93" />
+        </dl>
+        <a
+          href={MAPS_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block w-full text-center bg-accent text-ink font-extrabold uppercase tracking-tight py-4 rounded-md"
+        >
+          Cómo llegar
+        </a>
+      </section>
+    </MenuShell>
+  );
+}
+
+function Detail({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="border-t border-border pt-4">
+      <dt className="font-serif italic text-gold text-xs mb-1">{label}</dt>
+      <dd className="text-sm text-ink">{value}</dd>
+    </div>
+  );
+}
