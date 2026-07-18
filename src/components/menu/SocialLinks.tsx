@@ -37,7 +37,7 @@ export function SocialLinks() {
   return (
     <div className="grid grid-cols-3 gap-2 px-5">
       {links.map((link) => (
-        
+        <a
           key={link.label}
           href={link.href}
           target="_blank"
