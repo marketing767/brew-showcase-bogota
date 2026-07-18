@@ -82,16 +82,20 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Más de 30 referencias de cerveza importada en el Parque de la 93, Bogotá. Cervezas, comida, cocktails y licores.",
+          "Menú digital de Beer Lovers, Parque de la 93. Más de 30 cervezas importadas, cocktails, comida y licores.",
       },
       { property: "og:title", content: "Beer Lovers Bogotá — Menú" },
       {
         property: "og:description",
         content:
-          "Cultura de lúpulo importado. Belgas, alemanas, IPAs y más. Parque de la 93, Bogotá.",
+          "Menú digital de Beer Lovers, Parque de la 93. Más de 30 cervezas importadas, cocktails, comida y licores.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Beer Lovers Bogotá — Menú" },
+      { name: "twitter:description", content: "Menú digital de Beer Lovers, Parque de la 93. Más de 30 cervezas importadas, cocktails, comida y licores." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/6e7e79e2-47ea-47c2-9b33-5662d31b7709/id-preview-a166ed1b--2b7ddf30-d35f-40fe-a83f-8c7de4118a78.lovable.app-1784406013427.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/6e7e79e2-47ea-47c2-9b33-5662d31b7709/id-preview-a166ed1b--2b7ddf30-d35f-40fe-a83f-8c7de4118a78.lovable.app-1784406013427.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

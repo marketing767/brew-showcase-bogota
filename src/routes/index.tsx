@@ -18,7 +18,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Beer Lovers Bogotá — Menú" },
       {
         property: "og:description",
-        content: "Cultura de lúpulo importado. Belgas, alemanas, IPAs y más.",
+        content: "Menú digital de Beer Lovers, Parque de la 93. Más de 30 cervezas importadas, cocktails, comida y licores.",
       },
     ],
   }),
